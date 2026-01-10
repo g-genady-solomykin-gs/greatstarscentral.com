@@ -7,7 +7,7 @@ const tooltipOk = document.getElementById('tooltip-ok')
 const banner = document.querySelector('.diff-banner')
 const heroHeader = document.querySelector('.hero-header')
 const gif = 'img/kolcevim.gif'
-const img = 'img/fdsf.jpg'
+const img = 'img/final.jpeg'
 const gifDuration = 2000
 const fadeDuration = 1500
 
