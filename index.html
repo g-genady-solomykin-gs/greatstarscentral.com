@@ -53,16 +53,248 @@
                         <li><a href="https://g-genady-solomykin-gs.github.io/GreatStarsSpace/">GreatStars Space</a></li>
                     </ul>
                 </nav>
+                <button class="show-turbo-btn" id="show-turbo">
+                    🎁 Подарок от UapoHost
+                </button>
             </header>
         </div>
+        <!-- ===== 5 лет UapoHost ===== -->
+<section class="uapohost-anniversary">
+    <div class="container">
+        <h2>🎉 5 лет сотрудничества с UapoHost</h2>
+        <p>
+            В честь <strong>5-летия сотрудничества</strong> компания <strong>UapoHost</strong>  
+            дарит партнёру <strong>GreatStars</strong> <span>Turbo-подписку на 12 месяцев</span>.
+        </p>
+
+        <button class="activate-btn" id="open-modal">
+            Активировать Turbo-подписку
+        </button>
+    </div>
+</section>
+
+    <!-- ===== POPUP ===== -->
+    <div class="modal" id="turbo-modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+
+            <h3>🔑 Активация Turbo-подписки</h3>
+            <p>Введите 4-значный код активации</p>
+
+            <input
+                type="text"
+                id="turbo-code"
+                maxlength="4"
+                placeholder="____"
+            >
+
+            <button class="check-btn" id="check-code">
+                Активировать
+            </button>
+
+            <p class="error" id="error-msg">❌ Неверный код</p>
+
+            <div class="success" id="success-msg">
+                <h4>🚀 Turbo-подписка активирована!</h4>
+                <ul>
+                    <li>⚡ Увеличенная скорость загрузки сайта</li>
+                    <li>🔒 Усиленная защита и SSL</li>
+                    <li>📦 Расширенные лимиты хостинга</li>
+                    <li>🛠 Приоритетная техподдержка 24/7</li>
+                    <li>☁️ Резервное копирование</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     </div>
 
 
 
+    <style>
+        /* ===== UapoHost Anniversary ===== */
+.uapohost-anniversary {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #000, #111);
+    color: #fff;
+    text-align: center;
+}
 
+.uapohost-anniversary h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.uapohost-anniversary span {
+    color: #00ffcc;
+    font-weight: bold;
+}
+
+.activate-btn {
+    margin-top: 25px;
+    padding: 14px 30px;
+    font-size: 16px;
+    border: none;
+    background: #00ffcc;
+    color: #000;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.activate-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background: #111;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.modal input {
+    margin: 15px 0;
+    padding: 12px;
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+}
+
+.check-btn {
+    width: 100%;
+    padding: 12px;
+    background: #00ffcc;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.error {
+    color: #ff4d4d;
+    margin-top: 10px;
+    display: none;
+}
+
+.success {
+    display: none;
+    margin-top: 20px;
+}
+
+.success ul {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.uapohost-anniversary {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.uapohost-anniversary.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+    /* Кнопка показа подписки */
+.show-turbo-btn {
+    margin-top: 25px;
+    padding: 12px 28px;
+    font-size: 15px;
+    border-radius: 30px;
+    border: 1px solid #00ffcc;
+    background: transparent;
+    color: #00ffcc;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.show-turbo-btn:hover {
+    background: #00ffcc;
+    color: #000;
+}
+
+/* Блок подписки — скрыт по умолчанию */
+.uapohost-anniversary {
+    opacity: 0;
+    transform: translateY(50px);
+    pointer-events: none;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Показ блока */
+.uapohost-anniversary.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+    </style>
 
 
     <script src="js/script.js"></script>
+    <!-- <script>
+        const openModal = document.getElementById('open-modal');
+const modal = document.getElementById('turbo-modal');
+const closeModal = document.getElementById('close-modal');
+const checkBtn = document.getElementById('check-code');
+const input = document.getElementById('turbo-code');
+const errorMsg = document.getElementById('error-msg');
+const successMsg = document.getElementById('success-msg');
+
+openModal.addEventListener('click', () => {
+    modal.style.display = 'flex';
+});
+
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+    resetModal();
+});
+
+checkBtn.addEventListener('click', () => {
+    if (input.value === '5931') {
+        errorMsg.style.display = 'none';
+        successMsg.style.display = 'block';
+    } else {
+        errorMsg.style.display = 'block';
+        successMsg.style.display = 'none';
+    }
+});
+
+function resetModal() {
+    input.value = '';
+    errorMsg.style.display = 'none';
+    successMsg.style.display = 'none';
+}
+
+    </script> -->
 
 </body>
 </html>
