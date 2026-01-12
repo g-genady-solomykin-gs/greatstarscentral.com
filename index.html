@@ -29,6 +29,10 @@
         <div class="container">
             <header class="hero-header">
                 <h1 class="logo">GreatStars</h1>
+                <div class="turbo-status">
+                    🚀 Подписка Turbo активирована
+                </div>
+
                 <p class="tagline">Наши сайты и проекты</p>
 
                 <!-- Навигация -->
@@ -53,9 +57,7 @@
                         <li><a href="https://g-genady-solomykin-gs.github.io/GreatStarsSpace/">GreatStars Space</a></li>
                     </ul>
                 </nav>
-                <button class="show-turbo-btn" id="show-turbo">
-                    🎁 Подарок от UapoHost
-                </button>
+                
             </header>
         </div>
         <!-- ===== 5 лет UapoHost ===== -->
@@ -255,6 +257,35 @@
     transform: translateY(0);
     pointer-events: auto;
 }
+
+
+/* ===== TURBO STATUS ===== */
+.turbo-status {
+    margin-top: 12px;
+    display: inline-block;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #00ffcc;
+    border: 1px solid rgba(0, 255, 204, 0.6);
+    border-radius: 20px;
+    background: rgba(0, 255, 204, 0.08);
+    box-shadow: 0 0 12px rgba(0, 255, 204, 0.25);
+    animation: turboPulse 2s infinite ease-in-out;
+}
+
+@keyframes turboPulse {
+    0% {
+        box-shadow: 0 0 8px rgba(0, 255, 204, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 18px rgba(0, 255, 204, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 8px rgba(0, 255, 204, 0.2);
+    }
+}
+
 
     </style>
 
