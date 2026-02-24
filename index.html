@@ -32,6 +32,51 @@
                 <div class="turbo-status">
                     🚀 Подписка Turbo активирована
                 </div>
+                <!-- ===== TURBO BONUS JAPAN ===== -->
+                <section class="turbo-bonus">
+                    <div class="container">
+                        <div class="bonus-header" id="bonus-toggle">
+                            <h2>
+                                🎁 Теперь с бонусом +
+                                <span class="gradient-text">GreatStars</span>
+                            </h2>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="bonus-content" id="bonus-content">
+                            <p class="bonus-description">
+                                Реклама теперь бесплатна в крупнейших городах Японии:
+                            </p>
+
+                            <div class="city-grid">
+                                <span>Tokyo</span>
+                                <span>Osaka</span>
+                                <span>Kyoto</span>
+                                <span>Yokohama</span>
+                                <span>Nagoya</span>
+                                <span>Sapporo</span>
+                                <span>Fukuoka</span>
+                            </div>
+                            <div class="bonus-benefits">
+                            <h3>Почему это мощный подарок?</h3>
+
+                            <ul>
+                                <li>🚀 Увеличение охвата аудитории в Японии</li>
+                                <li>📢 Бесплатное размещение рекламы в топ-городах</li>
+                                <li>🌏 Рост узнаваемости бренда GreatStars</li>
+                                <li>💼 Привлечение новых партнёров и клиентов</li>
+                                <li>📈 Ускоренное масштабирование проектов</li>
+                            </ul>
+
+                            <p class="bonus-final">
+                                Это открывает новые возможности для международного развития
+                                и усиливает позиции <span class="gradient-text">GreatStars</span>
+                                на азиатском и японском рынке.
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+                </section>
 
                 <p class="tagline">Наши сайты и проекты</p>
 
@@ -287,45 +332,178 @@
 }
 
 
+/* ===== TURBO BONUS ===== */
+.turbo-bonus {
+    padding: 10px 5px;
+    border-radius: 10px;
+    background: radial-gradient(circle at top, #0f0f0f, #000);
+    color: #fff;
+    text-align: center;
+}
+
+.bonus-header {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 22px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.bonus-header:hover {
+    transform: scale(1.03);
+}
+
+.arrow {
+    font-size: 18px;
+    transition: transform 0.4s ease;
+}
+
+.bonus-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease, opacity 0.6s ease;
+    opacity: 0;
+}
+
+.bonus-content.active {
+    max-height: 420px;
+    opacity: 1;
+    margin-top: 25px;
+
+    overflow-y: auto;
+    padding-right: 8px;
+
+    scroll-behavior: smooth;
+}
+
+.bonus-description {
+    margin-bottom: 20px;
+    color: #ccc;
+    font-size: 15px;
+}
+
+/* Градиентный переливающийся текст */
+.gradient-text {
+    background: linear-gradient(90deg, #00ffcc, #00aaff, #ff00cc, #00ffcc);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 6s linear infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% }
+    100% { background-position: 300% }
+}
+
+/* Города */
+.city-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.city-grid span {
+    padding: 10px;
+    background: rgba(0,255,204,0.08);
+    border: 1px solid rgba(0,255,204,0.4);
+    border-radius: 20px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.city-grid span:hover {
+    background: #00ffcc;
+    color: #000;
+    transform: translateY(-3px);
+}
+
+
+/* ===== BONUS BENEFITS ===== */
+.bonus-benefits {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.bonus-benefits h3 {
+    margin-bottom: 18px;
+    font-size: 18px;
+    color: #00ffcc;
+}
+
+.bonus-benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: grid;
+    gap: 10px;
+}
+
+.bonus-benefits li {
+    font-size: 14px;
+    color: #ccc;
+    transition: 0.3s;
+}
+
+.bonus-benefits li:hover {
+    color: #00ffcc;
+    transform: translateX(5px);
+}
+
+.bonus-final {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.5;
+}
+
+
+/* ===== Custom Scrollbar ===== */
+.bonus-content.active::-webkit-scrollbar {
+    width: 6px;
+}
+
+.bonus-content.active::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.bonus-content.active::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00ffcc, #00aaff);
+    border-radius: 10px;
+}
+
+.bonus-content.active::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #00ffcc, #ff00cc);
+}
+
+/* Firefox */
+.bonus-content.active {
+    scrollbar-width: thin;
+    scrollbar-color: #00ffcc transparent;
+}
+
+.bonus-content.active {
+    position: relative;
+}
+
+.bonus-content.active::after {
+    content: "";
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    pointer-events: none;
+    background: linear-gradient(to top, #000, transparent);
+}
     </style>
 
 
     <script src="js/script.js"></script>
-    <!-- <script>
-        const openModal = document.getElementById('open-modal');
-const modal = document.getElementById('turbo-modal');
-const closeModal = document.getElementById('close-modal');
-const checkBtn = document.getElementById('check-code');
-const input = document.getElementById('turbo-code');
-const errorMsg = document.getElementById('error-msg');
-const successMsg = document.getElementById('success-msg');
-
-openModal.addEventListener('click', () => {
-    modal.style.display = 'flex';
-});
-
-closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-    resetModal();
-});
-
-checkBtn.addEventListener('click', () => {
-    if (input.value === '5931') {
-        errorMsg.style.display = 'none';
-        successMsg.style.display = 'block';
-    } else {
-        errorMsg.style.display = 'block';
-        successMsg.style.display = 'none';
-    }
-});
-
-function resetModal() {
-    input.value = '';
-    errorMsg.style.display = 'none';
-    successMsg.style.display = 'none';
-}
-
-    </script> -->
 
 </body>
 </html>
