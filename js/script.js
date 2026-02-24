@@ -104,3 +104,19 @@ const brg = document.querySelector('#burger').addEventListener('click', (e) => {
       show.classList.remove('show');
     } 
 })
+
+
+// ===== BONUS TOGGLE =====
+const bonusToggle = document.getElementById("bonus-toggle");
+const bonusContent = document.getElementById("bonus-content");
+const arrow = document.querySelector(".arrow");
+
+bonusToggle.addEventListener("click", () => {
+    bonusContent.classList.toggle("active");
+
+    if (bonusContent.classList.contains("active")) {
+        arrow.style.transform = "rotate(180deg)";
+    } else {
+        arrow.style.transform = "rotate(0deg)";
+    }
+});
