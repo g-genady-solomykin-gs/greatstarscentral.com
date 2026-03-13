@@ -32,51 +32,185 @@
                 <div class="turbo-status">
                     🚀 Подписка Turbo активирована
                 </div>
-                <!-- ===== TURBO BONUS JAPAN ===== -->
-                <section class="turbo-bonus">
-                    <div class="container">
-                        <div class="bonus-header" id="bonus-toggle">
-                            <h2>
-                                🎁 Теперь с бонусом +
-                                <span class="gradient-text">GreatStars</span>
-                            </h2>
-                            <span class="arrow">▼</span>
-                        </div>
+                
+                <!-- Новый блок "Реклама активирована" вместо turbo-bonus -->
+<section class="promo-alert">
+    <div class="container">
+        <div class="promo-header" id="promo-toggle">
+            <h2>
+                🎆 Реклама активирована!
+                <span class="gradient-text">GreatStars</span>
+            </h2>
+            <span class="arrow">▼</span>
+        </div>
+        <div class="promo-content" id="promo-content">
+            <p>Действует в следующих городах:</p>
+            <div class="city-grid">
+                <span>Tokyo</span>
+                <span>Osaka</span>
+                <span>Kyoto</span>
+                <span>Yokohama</span>
+                <span>Nagoya</span>
+                <span>Sapporo</span>
+                <span>Fukuoka</span>
+            </div>
+            <div class="account-number">
+                Номер счета: <strong>4400 4303 4117 9957</strong>
+            </div>
+        </div>
+    </div>
+</section>
 
-                        <div class="bonus-content" id="bonus-content">
-                            <p class="bonus-description">
-                                Реклама теперь бесплатна в крупнейших городах Японии:
-                            </p>
+<!-- Всплывающее уведомление -->
+<div id="city-notice" class="city-notice"></div>
 
-                            <div class="city-grid">
-                                <span>Tokyo</span>
-                                <span>Osaka</span>
-                                <span>Kyoto</span>
-                                <span>Yokohama</span>
-                                <span>Nagoya</span>
-                                <span>Sapporo</span>
-                                <span>Fukuoka</span>
-                            </div>
-                            <div class="bonus-benefits">
-                            <h3>Почему это мощный подарок?</h3>
+<style>
+.promo-alert {
+    padding: 10px;
+    border-radius: 10px;
+    background: radial-gradient(circle at top, #0f0f0f, #000);
+    color: #fff;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 320px;
+}
 
-                            <ul>
-                                <li>🚀 Увеличение охвата аудитории в Японии</li>
-                                <li>📢 Бесплатное размещение рекламы в топ-городах</li>
-                                <li>🌏 Рост узнаваемости бренда GreatStars</li>
-                                <li>💼 Привлечение новых партнёров и клиентов</li>
-                                <li>📈 Ускоренное масштабирование проектов</li>
-                            </ul>
+#promo-toggle h2 {
+    text-align: left !important;
+    font-size: 20px;
+}
 
-                            <p class="bonus-final">
-                                Это открывает новые возможности для международного развития
-                                и усиливает позиции <span class="gradient-text">GreatStars</span>
-                                на азиатском и японском рынке.
-                            </p>
-                        </div>
-                        </div>
-                    </div>
-                </section>
+.promo-header {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 22px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.promo-header:hover {
+    transform: scale(1.03);
+}
+
+.arrow {
+    font-size: 18px;
+    transition: transform 0.4s ease;
+}
+
+.promo-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.6s ease, opacity 0.6s ease;
+    margin-top: 0;
+}
+
+.promo-content.active {
+    max-height: 300px;
+    opacity: 1;
+    margin-top: 15px;
+}
+
+.city-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 8px;
+    max-width: 600px;
+    margin: 10px auto 0 auto;
+}
+
+.city-grid span {
+    padding: 10px;
+    background: rgba(0,255,204,0.08);
+    border: 1px solid rgba(0,255,204,0.4);
+    border-radius: 20px;
+    font-size: 14px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.city-grid span:hover {
+    background: #00ffcc;
+    color: #000;
+    transform: translateY(-3px);
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #00ffcc, #00aaff, #ff00cc);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 6s linear infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% }
+    100% { background-position: 300% }
+}
+
+/* ===== Всплывающее уведомление города ===== */
+/* ================= City notice слева ================= */
+.city-notice {
+    position: fixed;
+    top: 20%;
+    left: -300px; /* изначально скрыт слева */
+    background: #00ffcc;
+    color: #000;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,255,204,0.6);
+    opacity: 0;
+    transition: left 0.5s ease, opacity 0.5s ease;
+    z-index: 9999;
+}
+
+.city-notice.show {
+    left: 20px; /* появление слева */
+    opacity: 1;
+}
+
+
+.account-number {
+    margin-top: 15px;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #00ffcc;
+    text-align: center;
+    border-top: 1px solid rgba(0,255,204,0.4);
+}
+</style>
+
+<script>
+// ===== Toggle promo-alert =====
+const promoToggle = document.getElementById('promo-toggle');
+const promoContent = document.getElementById('promo-content');
+
+promoToggle.addEventListener('click', ()=>{
+    promoContent.classList.toggle('active');
+    promoToggle.querySelector('.arrow').style.transform = promoContent.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+});
+
+// ===== Показ уведомления при клике на город =====
+const cityNotice = document.getElementById('city-notice');
+const citySpans = document.querySelectorAll('.city-grid span');
+
+citySpans.forEach(span => {
+    span.addEventListener('click', () => {
+        cityNotice.textContent = `Реклама в ${span.textContent} активна!`;
+        cityNotice.classList.add('show');
+
+        // скрыть через 3 сек
+        setTimeout(() => {
+            cityNotice.classList.remove('show');
+        }, 3000);
+    });
+});
+</script>
 
                 <p class="tagline">Наши сайты и проекты</p>
 
@@ -401,7 +535,7 @@
 /* Города */
 .city-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(2,1fr);
     gap: 12px;
     max-width: 600px;
     margin: 0 auto;
