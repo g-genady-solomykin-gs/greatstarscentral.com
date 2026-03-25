@@ -21,10 +21,143 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#000000">
 
-    
+    <style>
+/* ===== MAINTENANCE OVERLAY ===== */
+.maintenance-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
+    z-index: 10000; /* Выше всех */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.maintenance-content {
+    text-align: center;
+    max-width: 450px;
+    padding: 40px;
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 204, 0.1);
+}
+
+.m-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+    animation: pulseIcon 2s infinite ease-in-out;
+}
+
+@keyframes pulseIcon {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px #00ffcc); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 20px #00ffcc); }
+}
+
+.m-status-pills {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pill {
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 12px;
+    background: rgba(0, 255, 204, 0.1);
+    color: #00ffcc;
+    border: 1px solid rgba(0, 255, 204, 0.3);
+}
+
+.m-text {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.highlight {
+    color: #00ffcc;
+    font-weight: bold;
+}
+
+/* Шкала загрузки */
+.m-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin: 30px 0;
+    overflow: hidden;
+}
+
+.m-progress-fill {
+    height: 100%;
+    width: 30%; /* Можно менять имитируя прогресс */
+    background: linear-gradient(90deg, #00ffcc, #00aaff);
+    box-shadow: 0 0 10px #00ffcc;
+    animation: progressFlow 3s infinite linear;
+}
+
+@keyframes progressFlow {
+    0% { transform: translateX(-100%); width: 20%; }
+    50% { width: 50%; }
+    100% { transform: translateX(400%); width: 20%; }
+}
+
+.m-footer {
+    font-size: 12px;
+    color: #666;
+    margin-top: 20px;
+}
+
+.admin-bypass {
+    margin-top: 25px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #444;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: 0.3s;
+}
+
+.admin-bypass:hover {
+    border-color: #00ffcc;
+    color: #00ffcc;
+}
+        
+    </style>
     
 </head>
 <body>
+
+    <div id="maintenance-overlay" class="maintenance-overlay">
+    <div class="maintenance-content">
+        <div class="m-icon">🛠️</div>
+        <h2 class="gradient-text">GreatStars: System Update</h2>
+        <div class="m-status-pills">
+            <span class="pill">Status: Maintenance</span>
+            <span class="pill">Mode: Turbo Optimized</span>
+        </div>
+        <p class="m-text">
+            Мы проводим плановое техническое обслуживание для улучшения работы платформы. 
+            Совсем скоро <span class="highlight">GreatStars</span> станет еще быстрее и мощнее.
+        </p>
+        <div class="m-progress-bar">
+            <div class="m-progress-fill"></div>
+        </div>
+        <p class="m-footer">Приносим извинения за временные неудобства.<br>© 2026 TSOPG GreatStars</p>
+        
+        <button onclick="document.getElementById('maintenance-overlay').style.display='none'" class="admin-bypass">
+            Продолжить просмотр (Admin)
+        </button>
+    </div>
+</div>
     
     <div class="diff">
         <div class="diff-banner"></div>
