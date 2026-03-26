@@ -71,6 +71,9 @@
             text-align: left;
             margin: 20px 0;
             padding: 0;
+            overflow: auto;
+            max-height: 316px;
+
         }
 
         .upgrade-list li {
@@ -747,8 +750,6 @@ citySpans.forEach(span => {
 
     </style>
     
-
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
     
@@ -760,22 +761,22 @@ citySpans.forEach(span => {
     const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
 
     // Читаем данные из памяти
-    let firstVisit = localStorage.getItem('gs_update_first_visit');
-    let lastShowTime = localStorage.getItem('gs_update_last_show');
-    let isFinished = localStorage.getItem('gs_update_completed');
+    let firstVisit = localStorage.getItem('gs_update_first_visit_1');
+    let lastShowTime = localStorage.getItem('gs_update_last_show_1');
+    let isFinished = localStorage.getItem('gs_update_completed_1');
 
     // Если 24 часа уже прошли когда-то раньше, ничего не делаем
     if (isFinished === 'true') return;
 
     // Если это самый первый визит после обновления
     if (!firstVisit) {
-        localStorage.setItem('gs_update_first_visit', NOW);
+        localStorage.setItem('gs_update_first_visit_1', NOW);
         firstVisit = NOW;
     }
 
     // Проверяем: прошло ли больше 24 часов с первого визита?
     if (NOW - firstVisit > TWENTY_FOUR_HOURS) {
-        localStorage.setItem('gs_update_completed', 'true');
+        localStorage.setItem('gs_update_completed_1', 'true');
         return;
     }
 
@@ -793,7 +794,7 @@ citySpans.forEach(span => {
 
     closeBtn.addEventListener('click', () => {
         popup.classList.remove('fade-in');
-        localStorage.setItem('gs_update_last_show', Date.now());
+        localStorage.setItem('gs_update_last_show_1', Date.now());
         
         setTimeout(() => {
             popup.classList.remove('show');
