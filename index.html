@@ -22,6 +22,18 @@
     <meta name="theme-color" content="#000000">
 
     <style>
+
+        /* Запрещаем скролл сайта, когда попап открыт (через JS будем добавлять класс body) */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        .popup-overlay {
+            /* Добавь это, чтобы на очень маленьких телефонах можно было прокрутить сам оверлей, если контент не влез */
+            overflow-y: auto; 
+            padding: 20px 0;
+        }
+
         .popup-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -97,6 +109,62 @@
             margin-top: 20px;
             font-style: italic;
         }
+
+        @media screen and (max-width: 479px) {
+    .popup-content {
+        /* Ограничиваем высоту контента, оставляя место для отступов сверху/снизу */
+        max-height: 90vh; 
+        max-height: 90svh; /* Современный стандарт для мобилок */
+        
+        width: 95%;
+        padding: 25px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 10px;
+    }
+
+    .gold-title {
+        font-size: 1.2rem !important; /* Уменьшаем заголовок, чтобы влез в строку */
+        line-height: 1.3;
+    }
+
+    .icon-pulse {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+
+    /* Настройка скролла для списка */
+    .upgrade-list {
+        /* flex-grow заставит список занять все свободное место между заголовком и кнопкой */
+        flex-grow: 1; 
+        max-height: none; /* Снимаем жесткий лимит, так как родитель теперь ограничен */
+        margin: 15px 0;
+        padding-right: 5px;
+        
+        /* Плавный скролл для iOS */
+        -webkit-overflow-scrolling: touch; 
+        overflow-y: auto;
+    }
+
+    .upgrade-list li {
+        font-size: 0.85rem; /* Чуть меньше текст для узких экранов */
+        line-height: 1.4;
+    }
+
+    .popup-btn {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+    
+    .footer-note {
+        margin-top: 10px;
+        font-size: 0.75rem;
+    }
+}
+
     </style>
 
 </head>
@@ -761,22 +829,22 @@ citySpans.forEach(span => {
     const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
 
     // Читаем данные из памяти
-    let firstVisit = localStorage.getItem('gs_update_first_visit_1');
-    let lastShowTime = localStorage.getItem('gs_update_last_show_1');
-    let isFinished = localStorage.getItem('gs_update_completed_1');
+    let firstVisit = localStorage.getItem('gs_update_first_visit_2');
+    let lastShowTime = localStorage.getItem('gs_update_last_show_2');
+    let isFinished = localStorage.getItem('gs_update_completed_2');
 
     // Если 24 часа уже прошли когда-то раньше, ничего не делаем
     if (isFinished === 'true') return;
 
     // Если это самый первый визит после обновления
     if (!firstVisit) {
-        localStorage.setItem('gs_update_first_visit_1', NOW);
+        localStorage.setItem('gs_update_first_visit_2', NOW);
         firstVisit = NOW;
     }
 
     // Проверяем: прошло ли больше 24 часов с первого визита?
     if (NOW - firstVisit > TWENTY_FOUR_HOURS) {
-        localStorage.setItem('gs_update_completed_1', 'true');
+        localStorage.setItem('gs_update_completed_2', 'true');
         return;
     }
 
@@ -794,7 +862,7 @@ citySpans.forEach(span => {
 
     closeBtn.addEventListener('click', () => {
         popup.classList.remove('fade-in');
-        localStorage.setItem('gs_update_last_show_1', Date.now());
+        localStorage.setItem('gs_update_last_show_2', Date.now());
         
         setTimeout(() => {
             popup.classList.remove('show');
