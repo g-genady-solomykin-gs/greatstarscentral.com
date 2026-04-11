@@ -611,55 +611,43 @@ citySpans.forEach(span => {
 
     <script>
 
-const VIEWS_KEY = 'gs_fake_views';
+const START_VIEWS = 7579345;
+const START_TIME = new Date('2026-04-01T00:00:00').getTime();
 
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+const VIEWS_KEY = 'gs_views_sync';
 
-function getRandomInterval() {
-    // от 3 до 7 часов
-    return getRandomInt(3, 7) * 60 * 60 * 1000;
-}
-
-function initViews() {
-    let data = localStorage.getItem(VIEWS_KEY);
-
-    if (!data) {
-        const initial = {
-            views: 7579345,
-            nextUpdate: Date.now() + getRandomInterval()
-        };
-        localStorage.setItem(VIEWS_KEY, JSON.stringify(initial));
-        return initial;
+// генерация "уникального шума" для устройства
+function getDeviceSeed() {
+    let seed = localStorage.getItem('gs_seed');
+    if (!seed) {
+        seed = Math.floor(Math.random() * 50); // 0–50
+        localStorage.setItem('gs_seed', seed);
     }
-
-    return JSON.parse(data);
+    return parseInt(seed, 10);
 }
 
-function updateViews() {
-    let data = initViews();
+function calculateViews() {
     const now = Date.now();
 
-    if (now >= data.nextUpdate) {
-        const increment = getRandomInt(2, 10);
-        data.views += increment;
-        data.nextUpdate = now + getRandomInterval();
-        localStorage.setItem(VIEWS_KEY, JSON.stringify(data));
-    }
+    // сколько прошло времени
+    const diffHours = (now - START_TIME) / (1000 * 60 * 60);
 
-    return data.views;
+    // рост: ~3–10 человек каждые 3–7 часов
+    const growth = Math.floor(diffHours * (Math.random() * 1.5 + 0.5));
+
+    const seed = getDeviceSeed();
+
+    return START_VIEWS + growth + seed;
 }
 
-// формат числа (2 768 000)
 function formatNumber(num) {
     return num.toLocaleString('ru-RU');
 }
 
-// вывод на экран
+// вывод
 const viewsEl = document.getElementById('views-number');
 if (viewsEl) {
-    const views = updateViews();
+    const views = calculateViews();
     viewsEl.textContent = formatNumber(views);
 }
     </script>
