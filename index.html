@@ -27,332 +27,184 @@
 </head>
 <body>
 
-   <style>
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f5f7fb;
-  font-family: Arial, sans-serif;
-}
-
-.ssl-error {
-  width: 420px;
-  padding: 40px;
-  text-align: center;
-  background: white;
-  border-radius: 24px;
-  box-shadow: 0 20px 50px rgba(0,0,0,.08);
-}
-
-.cloud {
-  position: relative;
-  font-size: 90px;
-  line-height: 1;
-  margin-bottom: 20px;
-  filter: grayscale(0.3);
-}
-
-.cloud span {
-  position: absolute;
-  font-size: 32px;
-  bottom: 8px;
-  right: 90px;
-}
-
-.ssl-error h2 {
-  color: #1f2937;
-  font-size: 24px;
-  margin-bottom: 12px;
-}
-
-.ssl-error p {
-  color: #6b7280;
-  line-height: 1.6;
-  font-size: 15px;
-}
-
-.certificate-info {
-  margin-top: 25px;
-  padding: 18px;
-  background: #f8fafc;
-  border-radius: 14px;
-  text-align: left;
-  font-size: 14px;
-  border: 1px solid #e5e7eb;
-}
-
-.certificate-info div {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  color: #64748b;
-}
-
-.certificate-info strong {
-  color: #ef4444;
-}
-
-.ssl-error button {
-  margin-top: 25px;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 12px;
-  background: #2563eb;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.ssl-error button:hover {
-  background: #1d4ed8;
-}
-
-.renew-info {
-  margin-top: 25px;
-  padding: 15px;
-  background: #fff7ed;
-  border-radius: 12px;
-  color: #9a3412;
-  font-size: 14px;
-  line-height: 1.5;
-  border: 1px solid #fed7aa;
-}
-</style>
-
-
-<div class="ssl-error">
-
-    <div class="cloud">
-        ☁️
-        <span>😟</span>
-    </div>
-
-    <h2>Ошибка SSL-сертификата</h2>
-
-    <p>
-        Не удалось установить безопасное соединение.<br>
-        Срок действия SSL (DV) сертификата истёк.
-    </p>
-
-
-    <div class="certificate-info">
-        <div>
-            <span>🔒 Сертификат:</span>
-            <strong>SSL (DV)</strong>
-        </div>
-
-        <div>
-            <span>📅 Зарегистрирован:</span>
-            <strong>04.06.2023</strong>
-        </div>
-
-        <div>
-            <span>⛔ Действовал до:</span>
-            <strong>24.07.2026</strong>
-        </div>
-
-        <div>
-            <span>🌐 Статус:</span>
-            <strong>Истёк</strong>
+    <div id="finish-popup" class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-header">
+                <span class="icon-pulse">✨</span>
+                <h2 class="gold-title">ОБНОВЛЕНИЕ ЗАВЕРШЕНО: ЭРА ГАРМОНИИ</h2>
+            </div>
+            <div class="popup-body">
+                <p style="color: #fff;">Системы GreatStars успешно синхронизированы. Мы завершили глобальную перестройку интерфейса и архитектуры кластеров.</p>
+                <hr>
+                <ul class="upgrade-list">
+                    <li>🚀 <b>Оптимизация ядра:</b> Скорость загрузки увеличена на 40% за счет квантового кэширования данных.</li>
+                    <li>💎 <b>Visual 2.0:</b> Внедрена система Glassmorphism и динамическое золотое свечение для всех панелей.</li>
+                    <li>🛰️ <b>Стабильность связи:</b> Улучшен протокол синхронизации с удаленными базами «Вайц» и кластерами 1–100.</li>
+                    <li>🛡️ <b>Безопасность:</b> Обновлены криптографические защитные контуры всех жилых секторов и баз хранения.</li>
+                    <li>🧠 <b>Интеллект системы:</b> Интегрирован нейросетевой помощник для анализа состояния галактических узлов.</li>
+                    <li>💰 <b>Экономический хаб:</b> Запущена поддержка транзакций для Космическо‑Звёздной Валюты в реальном времени.</li>
+                    <li>📱 <b>Мобильный мост:</b> Полная адаптация интерфейса для управления системами с мобильных устройств связи.</li>
+                    <li>🌌 <b>Картография:</b> Обновлены 3D-модели созвездий Дева и Близнецы для точной навигации НЛО.</li>
+                    <li>⚙️ <b>Автономия:</b> Внедрен алгоритм самовосстановления поврежденных информационных блоков.</li>
+                </ul>
+                <p class="footer-note">Благодарим за терпение. Будущее уже здесь.</p>
+            </div>
+            <button id="close-finish-popup" class="popup-btn" sty>ПРИНЯТЬ ПРОТОКОЛЫ</button>
         </div>
     </div>
-
-
-    <button>
-        Попробовать снова
-    </button>
-
-    <div class="renew-info">
-        Чтобы продолжить работу сайта, необходимо продлить SSL-сертификат.<br>
-        Перейдите в личный кабинет и оплатите продление<br>
-        на удобный для вас срок.
-    </div>
-
-</div>
-
-    <div class="none-display" style="display: none;">
-        <div id="finish-popup" class="popup-overlay">
-            <div class="popup-content">
-                <div class="popup-header">
-                    <span class="icon-pulse">✨</span>
-                    <h2 class="gold-title">ОБНОВЛЕНИЕ ЗАВЕРШЕНО: ЭРА ГАРМОНИИ</h2>
+    
+    <div class="diff">
+        <div class="diff-banner"></div>
+        <div class="container">
+            <header class="hero-header">
+                <h1 class="logo">GreatStars</h1>
+                <div class="turbo-status">
+                    🚀 Подписка Turbo активирована
                 </div>
-                <div class="popup-body">
-                    <p style="color: #fff;">Системы GreatStars успешно синхронизированы. Мы завершили глобальную перестройку интерфейса и архитектуры кластеров.</p>
-                    <hr>
-                    <ul class="upgrade-list">
-                        <li>🚀 <b>Оптимизация ядра:</b> Скорость загрузки увеличена на 40% за счет квантового кэширования данных.</li>
-                        <li>💎 <b>Visual 2.0:</b> Внедрена система Glassmorphism и динамическое золотое свечение для всех панелей.</li>
-                        <li>🛰️ <b>Стабильность связи:</b> Улучшен протокол синхронизации с удаленными базами «Вайц» и кластерами 1–100.</li>
-                        <li>🛡️ <b>Безопасность:</b> Обновлены криптографические защитные контуры всех жилых секторов и баз хранения.</li>
-                        <li>🧠 <b>Интеллект системы:</b> Интегрирован нейросетевой помощник для анализа состояния галактических узлов.</li>
-                        <li>💰 <b>Экономический хаб:</b> Запущена поддержка транзакций для Космическо‑Звёздной Валюты в реальном времени.</li>
-                        <li>📱 <b>Мобильный мост:</b> Полная адаптация интерфейса для управления системами с мобильных устройств связи.</li>
-                        <li>🌌 <b>Картография:</b> Обновлены 3D-модели созвездий Дева и Близнецы для точной навигации НЛО.</li>
-                        <li>⚙️ <b>Автономия:</b> Внедрен алгоритм самовосстановления поврежденных информационных блоков.</li>
+
+                <div class="views-counter" id="views-counter">
+                    👁 Просмотры: <span id="views-number">0</span>
+                </div>
+                
+                <!-- Новый блок "Реклама активирована" вместо turbo-bonus -->
+<section class="promo-alert">
+    <div class="container">
+        <div class="promo-header" id="promo-toggle">
+            <h2>
+                🎆 Реклама активирована!
+                <span class="gradient-text">GreatStars</span>
+            </h2>
+            <span class="arrow">▼</span>
+        </div>
+        <div class="promo-content" id="promo-content">
+            <p>Действует в следующих городах:</p>
+            <div class="city-grid">
+                <span>Tokyo</span>
+                <span>Osaka</span>
+                <span>Kyoto</span>
+                <span>Yokohama</span>
+                <span>Nagoya</span>
+                <span>Sapporo</span>
+                <span>Fukuoka</span>
+            </div>
+            <div class="account-number">
+                Номер счета: <strong>4400 4303 4117 9957</strong>
+            </div>
+        </div>
+        <div class="account-text">
+                TSOPG GreatStars — платформа для реализации масштабных проектов будущего, объединяющая инвестиции, науку и технологии.
+                Мы развиваем новые финансовые системы, инновационные технологии и инфраструктуру как на Земле, так и за её пределами.
+                Основатель — Геннадий Соломыкин, 2026.
+            </div>
+    </div>
+</section>
+
+<!-- Всплывающее уведомление -->
+<div id="city-notice" class="city-notice"></div>
+
+<script>
+// ===== Toggle promo-alert =====
+const promoToggle = document.getElementById('promo-toggle');
+const promoContent = document.getElementById('promo-content');
+
+promoToggle.addEventListener('click', ()=>{
+    promoContent.classList.toggle('active');
+    promoToggle.querySelector('.arrow').style.transform = promoContent.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+});
+
+// ===== Показ уведомления при клике на город =====
+const cityNotice = document.getElementById('city-notice');
+const citySpans = document.querySelectorAll('.city-grid span');
+
+citySpans.forEach(span => {
+    span.addEventListener('click', () => {
+        cityNotice.textContent = `Реклама в ${span.textContent} активна!`;
+        cityNotice.classList.add('show');
+
+        // скрыть через 3 сек
+        setTimeout(() => {
+            cityNotice.classList.remove('show');
+        }, 3000);
+    });
+});
+</script>
+
+                <p class="tagline">Наши сайты и проекты</p>
+
+                <!-- Навигация -->
+                <nav class="hero-nav">
+                    <div class="burger" id="burger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="tooltip" id="burger-tooltip">
+                        Откройте меню, чтобы посмотреть все наши сайты!
+                        <button id="tooltip-ok">OK</button>
+                    </div>
+                    <ul class="nav-links" id="nav-links">
+                        <li><a href="https://g-genady-solomykin-gs.github.io/my_book/">Книга (Русский)</a></li>
+                        <li><a href="https://g-genady-solomykin-gs.github.io/my_book_ja/">Книга (Японский)</a></li>
+                        <li><a href="https://g-genady-solomykin-gs.github.io/my_book_eng/">Книга (Английский)</a></li>
+                        <li><a href="https://genady-solomykin.github.io/greatstars-portals/">GreatStars Portals</a></li>
+                        <li><a href="https://g-genady-solomykin-gs.github.io/greatstars-usa-/">GreatStars USA</a></li>
+                        <li><a href="https://g-genady-solomykin-gs.github.io/greatstars-/">GreatStars Global</a></li>
+                        <li><a href="https://g-genady-solomykin-gs.github.io/greatstars_new/">GreatStars New</a></li>
+                        <li><a href="https://g-genady-solomykin-gs.github.io/GreatStarsSpace/">GreatStars Space</a></li>
                     </ul>
-                    <p class="footer-note">Благодарим за терпение. Будущее уже здесь.</p>
-                </div>
-                <button id="close-finish-popup" class="popup-btn" sty>ПРИНЯТЬ ПРОТОКОЛЫ</button>
-            </div>
+                </nav>
+                
+            </header>
         </div>
-        
-        <div class="diff">
-            <div class="diff-banner"></div>
-            <div class="container">
-                <header class="hero-header">
-                    <h1 class="logo">GreatStars</h1>
-                    <div class="turbo-status">
-                        🚀 Подписка Turbo активирована
-                    </div>
+        <!-- ===== 5 лет UapoHost ===== -->
+<section class="uapohost-anniversary">
+    <div class="container">
+        <h2>🎉 5 лет сотрудничества с UapoHost</h2>
+        <p>
+            В честь <strong>5-летия сотрудничества</strong> компания <strong>UapoHost</strong>  
+            дарит партнёру <strong>GreatStars</strong> <span>Turbo-подписку на 12 месяцев</span>.
+        </p>
 
-                    <div class="views-counter" id="views-counter">
-                        👁 Просмотры: <span id="views-number">0</span>
-                    </div>
-                    
-                    <!-- Новый блок "Реклама активирована" вместо turbo-bonus -->
-    <section class="promo-alert">
-        <div class="container">
-            <div class="promo-header" id="promo-toggle">
-                <h2>
-                    🎆 Реклама активирована!
-                    <span class="gradient-text">GreatStars</span>
-                </h2>
-                <span class="arrow">▼</span>
-            </div>
-            <div class="promo-content" id="promo-content">
-                <p>Действует в следующих городах:</p>
-                <div class="city-grid">
-                    <span>Tokyo</span>
-                    <span>Osaka</span>
-                    <span>Kyoto</span>
-                    <span>Yokohama</span>
-                    <span>Nagoya</span>
-                    <span>Sapporo</span>
-                    <span>Fukuoka</span>
-                </div>
-                <div class="account-number">
-                    Номер счета: <strong>4400 4303 4117 9957</strong>
-                </div>
-            </div>
-            <div class="account-text">
-                    TSOPG GreatStars — платформа для реализации масштабных проектов будущего, объединяющая инвестиции, науку и технологии.
-                    Мы развиваем новые финансовые системы, инновационные технологии и инфраструктуру как на Земле, так и за её пределами.
-                    Основатель — Геннадий Соломыкин, 2026.
-                </div>
-        </div>
-    </section>
+        <button class="activate-btn" id="open-modal">
+            Активировать Turbo-подписку
+        </button>
+    </div>
+</section>
 
-    <!-- Всплывающее уведомление -->
-    <div id="city-notice" class="city-notice"></div>
+    <!-- ===== POPUP ===== -->
+    <div class="modal" id="turbo-modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
 
-    <script>
-    // ===== Toggle promo-alert =====
-    const promoToggle = document.getElementById('promo-toggle');
-    const promoContent = document.getElementById('promo-content');
+            <h3>🔑 Активация Turbo-подписки</h3>
+            <p>Введите 4-значный код активации</p>
 
-    promoToggle.addEventListener('click', ()=>{
-        promoContent.classList.toggle('active');
-        promoToggle.querySelector('.arrow').style.transform = promoContent.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
-    });
+            <input
+                type="text"
+                id="turbo-code"
+                maxlength="4"
+                placeholder="____"
+            >
 
-    // ===== Показ уведомления при клике на город =====
-    const cityNotice = document.getElementById('city-notice');
-    const citySpans = document.querySelectorAll('.city-grid span');
-
-    citySpans.forEach(span => {
-        span.addEventListener('click', () => {
-            cityNotice.textContent = `Реклама в ${span.textContent} активна!`;
-            cityNotice.classList.add('show');
-
-            // скрыть через 3 сек
-            setTimeout(() => {
-                cityNotice.classList.remove('show');
-            }, 3000);
-        });
-    });
-    </script>
-
-                    <p class="tagline">Наши сайты и проекты</p>
-
-                    <!-- Навигация -->
-                    <nav class="hero-nav">
-                        <div class="burger" id="burger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div class="tooltip" id="burger-tooltip">
-                            Откройте меню, чтобы посмотреть все наши сайты!
-                            <button id="tooltip-ok">OK</button>
-                        </div>
-                        <ul class="nav-links" id="nav-links">
-                            <li><a href="https://g-genady-solomykin-gs.github.io/my_book/">Книга (Русский)</a></li>
-                            <li><a href="https://g-genady-solomykin-gs.github.io/my_book_ja/">Книга (Японский)</a></li>
-                            <li><a href="https://g-genady-solomykin-gs.github.io/my_book_eng/">Книга (Английский)</a></li>
-                            <li><a href="https://genady-solomykin.github.io/greatstars-portals/">GreatStars Portals</a></li>
-                            <li><a href="https://g-genady-solomykin-gs.github.io/greatstars-usa-/">GreatStars USA</a></li>
-                            <li><a href="https://g-genady-solomykin-gs.github.io/greatstars-/">GreatStars Global</a></li>
-                            <li><a href="https://g-genady-solomykin-gs.github.io/greatstars_new/">GreatStars New</a></li>
-                            <li><a href="https://g-genady-solomykin-gs.github.io/GreatStarsSpace/">GreatStars Space</a></li>
-                        </ul>
-                    </nav>
-                    
-                </header>
-            </div>
-            <!-- ===== 5 лет UapoHost ===== -->
-    <section class="uapohost-anniversary">
-        <div class="container">
-            <h2>🎉 5 лет сотрудничества с UapoHost</h2>
-            <p>
-                В честь <strong>5-летия сотрудничества</strong> компания <strong>UapoHost</strong>  
-                дарит партнёру <strong>GreatStars</strong> <span>Turbo-подписку на 12 месяцев</span>.
-            </p>
-
-            <button class="activate-btn" id="open-modal">
-                Активировать Turbo-подписку
+            <button class="check-btn" id="check-code">
+                Активировать
             </button>
-        </div>
-    </section>
 
-        <!-- ===== POPUP ===== -->
-        <div class="modal" id="turbo-modal">
-            <div class="modal-content">
-                <span class="close" id="close-modal">&times;</span>
+            <p class="error" id="error-msg">❌ Неверный код</p>
 
-                <h3>🔑 Активация Turbo-подписки</h3>
-                <p>Введите 4-значный код активации</p>
-
-                <input
-                    type="text"
-                    id="turbo-code"
-                    maxlength="4"
-                    placeholder="____"
-                >
-
-                <button class="check-btn" id="check-code">
-                    Активировать
-                </button>
-
-                <p class="error" id="error-msg">❌ Неверный код</p>
-
-                <div class="success" id="success-msg">
-                    <h4>🚀 Turbo-подписка активирована!</h4>
-                    <ul>
-                        <li>⚡ Увеличенная скорость загрузки сайта</li>
-                        <li>🔒 Усиленная защита и SSL</li>
-                        <li>📦 Расширенные лимиты хостинга</li>
-                        <li>🛠 Приоритетная техподдержка 24/7</li>
-                        <li>☁️ Резервное копирование</li>
-                    </ul>
-                </div>
+            <div class="success" id="success-msg">
+                <h4>🚀 Turbo-подписка активирована!</h4>
+                <ul>
+                    <li>⚡ Увеличенная скорость загрузки сайта</li>
+                    <li>🔒 Усиленная защита и SSL</li>
+                    <li>📦 Расширенные лимиты хостинга</li>
+                    <li>🛠 Приоритетная техподдержка 24/7</li>
+                    <li>☁️ Резервное копирование</li>
+                </ul>
             </div>
         </div>
+    </div>
 
-        </div>
     </div>
 
 
