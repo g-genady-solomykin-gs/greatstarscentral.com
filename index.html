@@ -27,8 +27,8 @@
 </head>
 <body>
 
-    <style>
-        body {
+   <style>
+body {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -37,7 +37,7 @@
   font-family: Arial, sans-serif;
 }
 
-        .ssl-error {
+.ssl-error {
   width: 420px;
   padding: 40px;
   text-align: center;
@@ -73,6 +73,27 @@
   font-size: 15px;
 }
 
+.certificate-info {
+  margin-top: 25px;
+  padding: 18px;
+  background: #f8fafc;
+  border-radius: 14px;
+  text-align: left;
+  font-size: 14px;
+  border: 1px solid #e5e7eb;
+}
+
+.certificate-info div {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: #64748b;
+}
+
+.certificate-info strong {
+  color: #ef4444;
+}
+
 .ssl-error button {
   margin-top: 25px;
   padding: 12px 28px;
@@ -88,22 +109,52 @@
 .ssl-error button:hover {
   background: #1d4ed8;
 }
-    </style>
+</style>
 
-    <div class="ssl-error">
-        <div class="cloud">
-            ☁️
-            <span>😟</span>
+
+<div class="ssl-error">
+
+    <div class="cloud">
+        ☁️
+        <span>😟</span>
+    </div>
+
+    <h2>Ошибка SSL-сертификата</h2>
+
+    <p>
+        Не удалось установить безопасное соединение.<br>
+        Срок действия SSL (DV) сертификата истёк.
+    </p>
+
+
+    <div class="certificate-info">
+        <div>
+            <span>🔒 Сертификат:</span>
+            <strong>SSL (DV)</strong>
         </div>
 
-        <h2>Ошибка SSL-сертификата</h2>
-        <p>
-            Не удалось установить безопасное соединение.<br>
-            Срок действия SSL (DV) сертификата истёк.
-        </p>
+        <div>
+            <span>📅 Зарегистрирован:</span>
+            <strong>04.06.2023</strong>
+        </div>
 
-        <button>Попробовать снова</button>
+        <div>
+            <span>⛔ Действовал до:</span>
+            <strong>24.07.2026</strong>
+        </div>
+
+        <div>
+            <span>🌐 Статус:</span>
+            <strong>Истёк</strong>
+        </div>
     </div>
+
+
+    <button>
+        Попробовать снова
+    </button>
+
+</div>
 
     <div class="none-display" style="display: none;">
         <div id="finish-popup" class="popup-overlay">
